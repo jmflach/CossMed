@@ -5,12 +5,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import coss.med.CossMed.doctor.DoctorDataDTO;
+
 @RestController
 @RequestMapping("doctors")
 public class DoctorController {
 	
 	@PostMapping
-	public void register(@RequestBody String body) {
+	public void register(@RequestBody DoctorDataDTO body) {
 		System.out.println(body);
 	}
 }
