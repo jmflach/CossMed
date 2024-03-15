@@ -1,5 +1,20 @@
 package coss.med.CossMed.address;
 
-public record AddressRecord(String street, String neighborhood, String zip_code, String city, String state, String complement, String number) {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
+public record AddressRecord(
+		@NotBlank
+		String street, 
+		@NotBlank
+		String neighborhood,
+		@NotBlank
+		@Pattern(regexp = "\\d{8}")
+		String zip_code,
+		@NotBlank
+		String city,
+		@NotBlank
+		String state, 
+		String complement,
+		String number) {
 }
