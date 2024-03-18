@@ -28,6 +28,7 @@ public class Doctor {
 	private Long id;
 	private String name;
 	private String email;
+	private String phone;
 	private String crm;
 
 	@Enumerated(EnumType.STRING)
@@ -39,6 +40,7 @@ public class Doctor {
 	public Doctor(DoctorDataDTO body) {
 		this.name = body.name();
 		this.email = body.email();
+		this.phone = body.phone();
 		this.crm = body.crm();
 		this.specialty = body.specialty();
 		this.address = new Address(body.address());
