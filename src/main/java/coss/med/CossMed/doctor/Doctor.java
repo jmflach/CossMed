@@ -45,5 +45,17 @@ public class Doctor {
 		this.specialty = body.specialty();
 		this.address = new Address(body.address());
 	}
+	
+	public void updateData(DoctorUpdateDataDTO data) {
+		if (data.name() != null) {
+			this.name = data.name();
+		}
+		if (data.phone() != null) {
+			this.phone = data.phone();
+		}
+		if (data.address() != null) {
+			this.address.updateData(data.address());
+		}
+	}
 
 }

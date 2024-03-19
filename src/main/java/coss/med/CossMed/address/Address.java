@@ -28,5 +28,30 @@ public class Address {
 		this.complement = body.complement();
 		this.number = body.number();
 	}
+	
+	public void updateData(AddressRecord data) {
+		if(this.street != null) {
+			this.street = data.street();
+		}
+		if(this.neighborhood != null) {
+			this.neighborhood = data.neighborhood();
+		}
+		if(this.zip_code != null) {
+			this.zip_code = data.zip_code();
+		}
+		if(this.city != null) {
+			this.city = data.city();
+		}
+		if(this.state != null) {
+			this.state = data.state();
+		}
+		if(this.complement != null) {
+			this.complement = data.complement();
+		}
+		if(this.number != null) {
+			this.number = data.number();
+		}
+		
+	}
 
 }
