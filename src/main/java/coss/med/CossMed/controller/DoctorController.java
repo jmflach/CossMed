@@ -36,7 +36,10 @@ public class DoctorController {
 	
 	@GetMapping
 	public Page<DoctorListDataDTO> list(@PageableDefault(size=10, page=0, sort="name") Pageable pagination) {
-		return repository.findAll(pagination).map(DoctorListDataDTO::new);
+		// Get all doctors:
+		// return repository.findAll(pagination).map(DoctorListDataDTO::new);
+		// Get all active doctors:
+		return repository.findAllByActiveTrue(pagination).map(DoctorListDataDTO::new);
 	}
 	
 	@Transactional
