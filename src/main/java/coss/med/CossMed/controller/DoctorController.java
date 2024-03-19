@@ -1,8 +1,9 @@
 package coss.med.CossMed.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,13 +33,7 @@ public class DoctorController {
 	}
 	
 	@GetMapping
-	public List<DoctorListDataDTO> list() {
-		System.out.println("Executando GET");
-		
-		List<Doctor> docs = repository.findAll().stream().toList();
-		
-		System.out.println(docs);
-		
-		return repository.findAll().stream().map(DoctorListDataDTO::new).toList();
+	public Page<DoctorListDataDTO> list(@PageableDefault(size=10, page=0, sort="name") Pageable pagination) {
+		return repository.findAll(pagination).map(DoctorListDataDTO::new);
 	}
 }
