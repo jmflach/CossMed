@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import coss.med.CossMed.doctor.DoctorDetailsDTO;
-import coss.med.CossMed.patient.Patient;
-import coss.med.CossMed.patient.PatientDataDTO;
-import coss.med.CossMed.patient.PatientDetailsDTO;
-import coss.med.CossMed.patient.PatientListDataDTO;
-import coss.med.CossMed.patient.PatientRepository;
-import coss.med.CossMed.patient.PatientUpdateDataDTO;
+import coss.med.CossMed.domain.doctor.DoctorDetailsDTO;
+import coss.med.CossMed.domain.patient.Patient;
+import coss.med.CossMed.domain.patient.PatientDataDTO;
+import coss.med.CossMed.domain.patient.PatientDetailsDTO;
+import coss.med.CossMed.domain.patient.PatientListDataDTO;
+import coss.med.CossMed.domain.patient.PatientRepository;
+import coss.med.CossMed.domain.patient.PatientUpdateDataDTO;
 import jakarta.validation.Valid;
 
 @RestController

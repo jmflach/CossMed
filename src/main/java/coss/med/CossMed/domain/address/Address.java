@@ -1,4 +1,4 @@
-package coss.med.CossMed.address;
+package coss.med.CossMed.domain.address;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

@@ -1,6 +1,6 @@
-package coss.med.CossMed.doctor;
+package coss.med.CossMed.domain.doctor;
 
-import coss.med.CossMed.address.AddressRecord;
+import coss.med.CossMed.domain.address.AddressRecord;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

@@ -1,4 +1,4 @@
-package coss.med.CossMed.doctor;
+package coss.med.CossMed.domain.doctor;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

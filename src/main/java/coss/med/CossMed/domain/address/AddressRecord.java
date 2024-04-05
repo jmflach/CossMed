@@ -1,4 +1,4 @@
-package coss.med.CossMed.address;
+package coss.med.CossMed.domain.address;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

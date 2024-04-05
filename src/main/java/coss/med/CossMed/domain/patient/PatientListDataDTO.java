@@ -1,4 +1,4 @@
-package coss.med.CossMed.patient;
+package coss.med.CossMed.domain.patient;
 
 public record PatientListDataDTO(
 		Long id,

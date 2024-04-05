@@ -1,6 +1,6 @@
-package coss.med.CossMed.doctor;
+package coss.med.CossMed.domain.doctor;
 
-import coss.med.CossMed.address.Address;
+import coss.med.CossMed.domain.address.Address;
 
 public record DoctorDetailsDTO(Long id, String name, String email, String crm, String phone, Specialty specialty, Address address) {
 

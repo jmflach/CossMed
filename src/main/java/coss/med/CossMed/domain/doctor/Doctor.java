@@ -1,8 +1,11 @@
-package coss.med.CossMed.patient;
+package coss.med.CossMed.domain.doctor;
 
-import coss.med.CossMed.address.Address;
+import coss.med.CossMed.domain.address.Address;
+import coss.med.CossMed.domain.address.AddressRecord;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,37 +15,41 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Table(name = "doctors")
+@Entity(name = "Doctor")
 @Getter
-@EqualsAndHashCode(of = "id")
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "patients")
-@Entity
-public class Patient {
+@EqualsAndHashCode(of = "id")
+public class Doctor {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private String name;
 	private String email;
 	private String phone;
-	private String cpf;
-	
+	private String crm;
+
+	@Enumerated(EnumType.STRING)
+	private Specialty specialty;
+
 	@Embedded
 	private Address address;
-	
+
 	private Boolean active;
 	
-	public Patient(PatientDataDTO body) {
+	public Doctor(DoctorDataDTO body) {
 		this.name = body.name();
 		this.email = body.email();
 		this.phone = body.phone();
-		this.cpf = body.cpf();
+		this.crm = body.crm();
+		this.specialty = body.specialty();
 		this.address = new Address(body.address());
 		this.active = true;
 	}
 	
-	public void updateData(PatientUpdateDataDTO data) {
+	public void updateData(DoctorUpdateDataDTO data) {
 		if (data.name() != null) {
 			this.name = data.name();
 		}
@@ -57,4 +64,5 @@ public class Patient {
 	public void delete() {
 		this.active = false;
 	}
+
 }
