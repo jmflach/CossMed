@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import coss.med.CossMed.domain.user.AuthenticationDataDTO;
+import coss.med.CossMed.domain.user.User;
+import coss.med.CossMed.infra.security.TokenService;
 import jakarta.validation.Valid;
 
 @RestController
@@ -19,12 +21,15 @@ public class AuthenticatorController {
 	@Autowired
 	private AuthenticationManager manager;
 	
+	@Autowired
+	private TokenService tokenService;
+	
 	@PostMapping
 	public ResponseEntity login(@RequestBody @Valid AuthenticationDataDTO body) {
 		var token = new UsernamePasswordAuthenticationToken(body.login(), body.password());
 		var authentication = manager.authenticate(token);
-		
-		return ResponseEntity.ok().build();
+
+		return ResponseEntity.ok(tokenService.generateToken((User) authentication.getPrincipal()));
 	}
 	
 }
