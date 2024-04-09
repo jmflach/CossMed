@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import coss.med.CossMed.domain.user.AuthenticationDataDTO;
 import coss.med.CossMed.domain.user.User;
+import coss.med.CossMed.infra.security.JWTTokenDataDTO;
 import coss.med.CossMed.infra.security.TokenService;
 import jakarta.validation.Valid;
 
@@ -25,11 +26,13 @@ public class AuthenticatorController {
 	private TokenService tokenService;
 	
 	@PostMapping
-	public ResponseEntity login(@RequestBody @Valid AuthenticationDataDTO body) {
-		var token = new UsernamePasswordAuthenticationToken(body.login(), body.password());
-		var authentication = manager.authenticate(token);
+	public ResponseEntity<JWTTokenDataDTO> login(@RequestBody @Valid AuthenticationDataDTO body) {
+		var authToken = new UsernamePasswordAuthenticationToken(body.login(), body.password());
+		var authentication = manager.authenticate(authToken);
 
-		return ResponseEntity.ok(tokenService.generateToken((User) authentication.getPrincipal()));
+		var tokenJWT = tokenService.generateToken((User) authentication.getPrincipal());
+		
+		return ResponseEntity.ok(new JWTTokenDataDTO(tokenJWT));
 	}
 	
 }
