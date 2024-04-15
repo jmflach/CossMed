@@ -16,10 +16,12 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Table(name = "users")
 @Entity(name = "User")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -30,6 +32,11 @@ public class User implements UserDetails {
 	private Long id;
 	private String login;
 	private String password;
+	
+	public User(AuthenticationDataDTO body) {
+		this.login = body.login();
+		this.password = body.password();
+	}
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
