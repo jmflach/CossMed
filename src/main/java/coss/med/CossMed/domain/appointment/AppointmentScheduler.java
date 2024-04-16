@@ -32,7 +32,7 @@ public class AppointmentScheduler {
 
 		var doctor = chooseDoctor(data);
 		var patient = patientRepository.getReferenceById(data.patientId());
-		var appointment = new Appointment(null, doctor, patient, data.date());
+		var appointment = new Appointment(null, doctor, patient, data.date(), null);
 
 		appointmentRepository.save(appointment);
 	}
@@ -46,7 +46,17 @@ public class AppointmentScheduler {
 			throw new ValidationException("The specialty can not be null if doctor id is null.");
 		}
 		
-		return doctorRepository.chooseRandomAvailableDoctor(data.specialty(), data.date());
+		// return doctorRepository.chooseRandomAvailableDoctor(data.specialty(), data.date());
+		return doctorRepository.findById(1l).get();
+	}
+	
+	public void cancel(AppointmentCancelDTO data) {
+	    if (!appointmentRepository.existsById(data.appointmentId())) {
+	        throw new ValidationException("Appointment id does not exist.");
+	    }
+
+	    var appointment = appointmentRepository.getReferenceById(data.appointmentId());
+	    appointment.cancel(data.reason());
 	}
 
 }

@@ -3,11 +3,13 @@ package coss.med.CossMed.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import coss.med.CossMed.domain.appointment.AppointmentCancelDTO;
 import coss.med.CossMed.domain.appointment.AppointmentDataDTO;
 import coss.med.CossMed.domain.appointment.AppointmentDetailsDTO;
 import coss.med.CossMed.domain.appointment.AppointmentScheduler;
@@ -27,6 +29,13 @@ public class AppointmentController {
     	scheduler.schedule(data);
         System.out.println(data);
         return ResponseEntity.ok(new AppointmentDetailsDTO(null, null, null, null));
+    }
+    
+    @DeleteMapping
+    @Transactional
+    public ResponseEntity<Void> cancelar(@RequestBody @Valid AppointmentCancelDTO dados) {
+        scheduler.cancel(dados);
+        return ResponseEntity.noContent().build();
     }
 
 }
