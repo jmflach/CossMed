@@ -1,7 +1,6 @@
 package coss.med.CossMed.domain.doctor;
 
 import coss.med.CossMed.domain.address.Address;
-import coss.med.CossMed.domain.address.AddressRecord;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

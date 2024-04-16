@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import coss.med.CossMed.domain.doctor.DoctorDetailsDTO;
 import coss.med.CossMed.domain.patient.Patient;
 import coss.med.CossMed.domain.patient.PatientDataDTO;
 import coss.med.CossMed.domain.patient.PatientDetailsDTO;

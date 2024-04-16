@@ -7,9 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotNull;
-
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 	Page<Doctor> findAllByActiveTrue(Pageable pagination);
 
