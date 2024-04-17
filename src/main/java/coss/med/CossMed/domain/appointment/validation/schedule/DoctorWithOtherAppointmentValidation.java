@@ -1,4 +1,4 @@
-package coss.med.CossMed.domain.appointment.validation;
+package coss.med.CossMed.domain.appointment.validation.schedule;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ public class DoctorWithOtherAppointmentValidation implements AppointmentValidato
     public void validate(AppointmentDataDTO data) {
 
         System.out.println("Checking doctor " +  data.doctorId() + " date " + data.date());
-        var isDoctorBusy = appointmentRepository.existsByDoctorIdAndDate(data.doctorId(), data.date());
+        var isDoctorBusy = appointmentRepository.existsByDoctorIdAndDateAndCancellationReasonIsNull(data.doctorId(), data.date());
         if(isDoctorBusy) {
             throw new ValidationException("The doctor must not have other appointment at the same time.");
         }

@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
-    boolean existsByDoctorIdAndDate(Long doctorId, LocalDateTime date);
+    boolean existsByDoctorIdAndDateAndCancellationReasonIsNull(Long doctorId, LocalDateTime date);
 
-    boolean existsByPatientIdAndDateBetween(Long patientId, LocalDateTime openHours, LocalDateTime closeHours);
+    boolean existsByPatientIdAndDateBetweenAndCancellationReasonIsNull(Long patientId, LocalDateTime openHours, LocalDateTime closeHours);
 
 }

@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import coss.med.CossMed.domain.appointment.validation.AppointmentValidator;
+import coss.med.CossMed.domain.appointment.validation.schedule.AppointmentValidator;
+import coss.med.CossMed.domain.appointment.validation.cancellation.CancelAppointmentValidator;
 import coss.med.CossMed.domain.doctor.Doctor;
 import coss.med.CossMed.domain.doctor.DoctorRepository;
 import coss.med.CossMed.domain.patient.PatientRepository;
@@ -25,6 +26,9 @@ public class AppointmentScheduler {
 
 	@Autowired
 	private List<AppointmentValidator> validators;
+
+	@Autowired
+	private List<CancelAppointmentValidator> cancelAppointmentValidators;
 
 	public AppointmentDetailsDTO schedule(AppointmentDataDTO data) {
 
@@ -68,6 +72,8 @@ public class AppointmentScheduler {
 	    if (!appointmentRepository.existsById(data.appointmentId())) {
 	        throw new ValidationException("Appointment id does not exist.");
 	    }
+
+		cancelAppointmentValidators.forEach(v -> v.validate(data));
 
 	    var appointment = appointmentRepository.getReferenceById(data.appointmentId());
 	    appointment.cancel(data.reason());

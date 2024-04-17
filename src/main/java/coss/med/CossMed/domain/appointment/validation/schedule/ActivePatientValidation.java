@@ -1,4 +1,4 @@
-package coss.med.CossMed.domain.appointment.validation;
+package coss.med.CossMed.domain.appointment.validation.schedule;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

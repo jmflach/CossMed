@@ -1,4 +1,4 @@
-package coss.med.CossMed.domain.appointment.validation;
+package coss.med.CossMed.domain.appointment.validation.schedule;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import coss.med.CossMed.domain.appointment.AppointmentDataDTO;
 import jakarta.validation.ValidationException;
 
-@Component
+@Component("AdvanceTimeValidationSchedule")
 public class AdvanceTimeValidation implements AppointmentValidator {
 
     public void validate(AppointmentDataDTO data) {

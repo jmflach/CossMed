@@ -1,4 +1,4 @@
-package coss.med.CossMed.domain.appointment.validation;
+package coss.med.CossMed.domain.appointment.validation.schedule;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,7 +18,7 @@ public class PatientWithOtherAppointmentValidation implements AppointmentValidat
         var openHours = data.date().withHour(7);
         var closeHours = data.date().withHour(18);
 
-        var havePatientAnotherAppointment = appointmentRepository.existsByPatientIdAndDateBetween(data.patientId(), openHours, closeHours);
+        var havePatientAnotherAppointment = appointmentRepository.existsByPatientIdAndDateBetweenAndCancellationReasonIsNull(data.patientId(), openHours, closeHours);
 
         if(havePatientAnotherAppointment) {
             throw new ValidationException("The patient must not have other appointment at the same day.");
