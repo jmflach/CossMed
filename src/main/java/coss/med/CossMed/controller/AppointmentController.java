@@ -12,10 +12,12 @@ import coss.med.CossMed.domain.appointment.AppointmentCancelDTO;
 import coss.med.CossMed.domain.appointment.AppointmentDataDTO;
 import coss.med.CossMed.domain.appointment.AppointmentDetailsDTO;
 import coss.med.CossMed.domain.appointment.AppointmentScheduler;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("appointments")
+@SecurityRequirement(name = "bearer-key")
 public class AppointmentController {
 
 	@Autowired

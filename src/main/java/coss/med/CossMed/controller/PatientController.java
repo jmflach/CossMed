@@ -22,10 +22,12 @@ import coss.med.CossMed.domain.patient.PatientDetailsDTO;
 import coss.med.CossMed.domain.patient.PatientListDataDTO;
 import coss.med.CossMed.domain.patient.PatientRepository;
 import coss.med.CossMed.domain.patient.PatientUpdateDataDTO;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("patients")
+@SecurityRequirement(name = "bearer-key")
 public class PatientController {
 
 	@Autowired
